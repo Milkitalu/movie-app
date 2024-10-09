@@ -9,11 +9,11 @@ function AllRoutes() {
   return (
   <>
     <Routes>
-        <Route path="/" element = {<MovieList />} />
-        <Route path="movies/:id" element = {<MovieDetails />} />
-        <Route path="movies/popular" element = {<MovieList />} />
-        <Route path="movies/toprated" element = {<MovieList />} />
-        <Route path="movies/upcoming" element = {<MovieList />} />
+        <Route path="/" element = {<MovieList urlPath ='movie/now_playing'/>} />
+        <Route path="movies/:id" element = {<MovieDetails  />} />
+        <Route path="movies/popular" element = {<MovieList urlPath ='movie/popular' />} />
+        <Route path="movies/toprated" element = {<MovieList urlPath ='movie/top_rated' />} />
+        <Route path="movies/upcoming" element = {<MovieList urlPath ='movie/upcoming' />} />
         <Route path="search" element = {<SearchMovie />} />
         <Route path="*" element = {<PageNotFound />} />
     </Routes>

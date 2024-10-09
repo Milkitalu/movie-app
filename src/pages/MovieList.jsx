@@ -1,22 +1,11 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import React from "react";
+import useFetchData from '../customhooks/useFetchData';
+import MovieCard from "../components/MovieCard.jsx";
 
-import MovieCard from "../components/MovieCard.jsx"
+function MovieList({urlPath}) {
+  
+  const {data: movies} = useFetchData(`https://api.themoviedb.org/3/${urlPath}?api_key=ac27197c2bbddbd30cca82451ddd6fcf`);
 
-function MovieList() {
 
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    async function fetchMoviedData () {
-      const res = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=ac27197c2bbddbd30cca82451ddd6fcf");
-      const getData =  await res.json();
-      console.log(getData);
-      setMovies(getData.results);
-    }
-    fetchMoviedData();
-  }, [setMovies])
   return (
     <main>
       <section className="max-w-7xl mx-auto py-7">
@@ -30,4 +19,4 @@ function MovieList() {
   );
 }       
  
-export default MovieList
+export default MovieList;
