@@ -1,13 +1,33 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import React from "react";
 
+import MovieCard from "../components/MovieCard.jsx"
+
 function MovieList() {
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    async function fetchMoviedData () {
+      const res = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=ac27197c2bbddbd30cca82451ddd6fcf");
+      const getData =  await res.json();
+      console.log(getData);
+      setMovies(getData.results);
+    }
+    fetchMoviedData();
+  }, [setMovies])
   return (
     <main>
-      <div className="text-8xl bg-emerald-200 p-10 border-8 border-blue-800 rounded-lg m-11">
-        Movie List
-      </div>
+      <section className="max-w-7xl mx-auto py-7">
+        <div className="flex justify-start flex-wrap">
+          {movies.map((movie)=>
+            <MovieCard key={movie.id} movie={movie} />
+          )}
+         </div>
+      </section>
     </main>
   );
-}
-
+}       
+ 
 export default MovieList
