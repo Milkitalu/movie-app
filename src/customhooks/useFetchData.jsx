@@ -1,5 +1,5 @@
 
-import  { React, useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 
 function useFetchData(urlPath, searchTerm = "") {
     const [data, setData] = useState([]);
@@ -13,7 +13,7 @@ function useFetchData(urlPath, searchTerm = "") {
           setData(getData.results);
         }
         fetchMovieData();
-      }, [])
+      }, [url])
   return (
     {data}
   );
