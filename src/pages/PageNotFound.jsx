@@ -2,7 +2,9 @@
 
 function PageNotFound() {
   return (
-    <main>PageNotFound</main>
+    <main>
+      <p>PageNotFound</p>
+    </main>
   )
 }
 
